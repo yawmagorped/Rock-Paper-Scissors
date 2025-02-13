@@ -1,3 +1,15 @@
 body {
     background-color: rgb(49, 49, 49);
+    margin: 10px;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+button {
+    height: 100px;
+    flex: 1;
+    font-size: 72px;
 }

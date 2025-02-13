@@ -15,7 +15,7 @@ function getComputerChoice() {
 }
 
 function getHumanChoice() {
-    let choice = prompt("please choose your move");
+    let choice;
     choice = choice.toLowerCase();
     switch (choice) {
         case "rock":
@@ -98,12 +98,11 @@ function playGame() {
     let computerScore = 0;
     let gameState;
 
-    for (let i = 0; i < 5; i++) {
-        gameState = playRound();
-        if(gameState == Result.WIN){
-            humanScore++;
-        } else if(gameState == Result.LOSE) computerScore++;
-    }
+    gameState = playRound();
+
+    if(gameState == Result.WIN){
+        humanScore++;
+    } else if(gameState == Result.LOSE) computerScore++;
 
     console.log("your score: " + humanScore +"\ncomputer score: " + computerScore);
 }
