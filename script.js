@@ -80,7 +80,7 @@ function gameLogic(humanChoice, computerChoice){
 const divVs = document.querySelector(".vs");
 const divResults = document.querySelector(".results");
 const buttonContainer = document.querySelector(".button-container");
-buttonContainer.addEventListener('click', (e) => playRound(e.target.id));
+buttonContainer.addEventListener('click', (e) => playGame(e.target.id));
 
 const playerTxt = document.createElement("span");
 const vsTxt = document.createElement("span");
@@ -136,16 +136,18 @@ function displayChoice(choice) {
     }
 }
 
-function playGame() {
-    let humanScore = 0;
-    let computerScore = 0;
-    let gameState;
+let humanScore = 0;
+let computerScore = 0;
+let gameState;
+const scoreDiv = document.querySelector(".score");
 
-    gameState = playRound();
+function playGame(target) {
+
+    gameState = playRound(target);
 
     if(gameState == Result.WIN){
         humanScore++;
     } else if(gameState == Result.LOSE) computerScore++;
 
-    console.log("your score: " + humanScore +"\ncomputer score: " + computerScore);
+    scoreDiv.textContent = "your score: " + humanScore +"\ncomputer score: " + computerScore;
 }
