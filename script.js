@@ -77,24 +77,63 @@ function gameLogic(humanChoice, computerChoice){
             break;
     }
 }
-
+const divVs = document.querySelector(".vs");
+const divResults = document.querySelector(".results");
 const buttonContainer = document.querySelector(".button-container");
 buttonContainer.addEventListener('click', (e) => playRound(e.target.id));
+
+const playerTxt = document.createElement("span");
+const vsTxt = document.createElement("span");
+const computerTxt = document.createElement("span");
+
+playerTxt.style.color = "cyan";
+computerTxt.style.color = "pink";
+
+divVs.appendChild(playerTxt);
+divVs.appendChild(vsTxt);
+divVs.appendChild(computerTxt);
 
 function playRound(target) {
 
     console.log(target);
     let human = getHumanChoice(target);
     let computer = getComputerChoice();
-    
-    console.log(human + "vs" + computer);
+
+
+    playerTxt.textContent = displayChoice(human);
+    vsTxt.textContent = " vs ";
+    computerTxt.textContent = displayChoice(computer);
+
+
+
+
+
     let result = gameLogic(human, computer);
     if(result == 1) {
-        console.log("you won~!");
-    } else if (result == 0) console.log("you lost! :(");
-    else console.log("drrrrrrraw!");
-    
+        divResults.textContent = "you won~!";
+        divResults.style.color = "green";
+    } else if (result == 0) {
+        divResults.textContent = "you lost! :(";
+        divResults.style.color = "red";
+    } else {
+        divResults.textContent = "drrrrrrraw!";
+        divResults.style.color = "yellow";
+    }
     return result;
+}
+
+function displayChoice(choice) {
+    switch (choice) {
+        case States.ROCK:
+            return "rock"; 
+            break;
+        case States.PAPER:
+            return "paper";
+            break;
+        case States.SCISSORS:
+            return "scissors";
+            break;
+    }
 }
 
 function playGame() {
