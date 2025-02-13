@@ -94,8 +94,6 @@ divVs.appendChild(vsTxt);
 divVs.appendChild(computerTxt);
 
 function playRound(target) {
-
-    console.log(target);
     let human = getHumanChoice(target);
     let computer = getComputerChoice();
 
@@ -103,10 +101,6 @@ function playRound(target) {
     playerTxt.textContent = displayChoice(human);
     vsTxt.textContent = " vs ";
     computerTxt.textContent = displayChoice(computer);
-
-
-
-
 
     let result = gameLogic(human, computer);
     if(result == 1) {
@@ -149,5 +143,5 @@ function playGame(target) {
         humanScore++;
     } else if(gameState == Result.LOSE) computerScore++;
 
-    scoreDiv.textContent = "your score: " + humanScore +"\ncomputer score: " + computerScore;
+    scoreDiv.innerText = "your score: " + humanScore +"\ncomputer score: " + computerScore;
 }
