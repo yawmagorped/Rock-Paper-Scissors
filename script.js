@@ -14,9 +14,8 @@ function getComputerChoice() {
     return Math.floor(Math.random() * 3);
 }
 
-function getHumanChoice() {
-    let choice;
-    choice = choice.toLowerCase();
+function getHumanChoice(choice) {
+    choice = choice.toString();
     switch (choice) {
         case "rock":
             return States.ROCK;
@@ -79,8 +78,13 @@ function gameLogic(humanChoice, computerChoice){
     }
 }
 
-function playRound() {
-    let human = getHumanChoice();
+const buttonContainer = document.querySelector(".button-container");
+buttonContainer.addEventListener('click', (e) => playRound(e.target.id));
+
+function playRound(target) {
+
+    console.log(target);
+    let human = getHumanChoice(target);
     let computer = getComputerChoice();
     
     console.log(human + "vs" + computer);
@@ -106,5 +110,3 @@ function playGame() {
 
     console.log("your score: " + humanScore +"\ncomputer score: " + computerScore);
 }
-
-playGame();
